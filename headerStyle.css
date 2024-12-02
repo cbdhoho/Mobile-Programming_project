@@ -37,6 +37,10 @@ body {
     text-align: center;
 }
 
+#titleText {
+    text-decoration: none;
+}
+
 hr {
     border: none;
     height: 2px;

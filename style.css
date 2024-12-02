@@ -26,29 +26,23 @@ h1, h2 {
     text-align: center;
 }
 
-button {
+button, select, input {
     display: block;
     width: 100%;
     padding: 10px;
     margin: 5px 0;
     font-size: 1rem;
-    background-color: #4CAF50;
-    color: white;
     border: none;
     border-radius: 5px;
 }
 
-button:disabled {
-    background-color: #ddd;
+button {
+    background-color: #4CAF50;
+    color: white;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+button:disabled {
+    background-color: #ddd;
 }
 
 ul {
@@ -61,15 +55,7 @@ ul li {
     border-bottom: 1px solid #ddd;
 }
 
-/* Style for task items */
-.task {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-}
-
-/* Style for completed tasks */
 .completed {
     text-decoration: line-through;
-    color: grey;  /* This ensures the strikethrough task is greyed out */
+    color: grey;
 }
