@@ -1,9 +1,83 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Study Timer</title>
-        <link href="timer.png" rel="shortcut icon" type="image/png">
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Timer</title>
+    <link href="timer.png" rel="shortcut icon" type="image/png">
+    <style>
+        #topContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #topSetting {
+            display: flex;
+            gap: 10px; /* 버튼 사이의 간격 */
+        }
+        #nameChange, #init {
+            cursor: pointer; /* 마우스 오버시 포인터 모양 변경 */
+        }
+        #headerTitle {
+            text-align: center;
+        }
+        nav {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px 10px;
+        }
+        
+        nav ul li a:hover {
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="topContainer">
+            <div id="topParagraph">소중한 나의 공부시간 기록장</div>
+            <div id="topSetting">
+                <div id="nameChange">이름 변경</div>
+                <div id="init">초기화</div>
+            </div>
+        </div>
+        <div>
+            <h1 id="headerTitle">김민선's Study Timer</h1>
+        </div>
+    </header>
+    <hr>
+    <nav>
+        <ul>
+            <li><a href="study-timer.html">공부 타이머</a></li>
+            <li><a href="todo-list.html">할일 관리</a></li>
+            <li><a href="study-statistics.html">학습 통계</a></li>
+            <li><a href="white-noise.html">백색소음</a></li>
+        </ul>
+    </nav>
+    <section>
+        <article>
+
+        </article>
+    </section>
+    <footer>
+
+    </footer>
+</body>
+
 </html>
