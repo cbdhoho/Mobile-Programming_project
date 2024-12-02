@@ -17,7 +17,13 @@
             gap: 10px; /* 버튼 사이의 간격 */
         }
         #nameChange, #init {
-            cursor: pointer; /* 마우스 오버시 포인터 모양 변경 */
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        #nameChange:hover, #init:hover {
+            background-color: #e9ecef;
         }
         #headerTitle {
             text-align: center;
