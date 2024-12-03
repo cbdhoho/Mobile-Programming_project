@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="headerStyle.css">
-    <link rel="stylesheet" href="study-timer-style.css">
+    <link rel="stylesheet" href="todo-list.css">
 </head>
 
 <body>
@@ -37,9 +37,23 @@
         </ul>
     </nav>
     <section>
-        <article>
-
-        </article>
+        <div class="date-container">
+            <div class="date">2024.12.02(Mon)</div>
+            <div class="calendar-icon"><img src="calendar.png" alt="calendar" width="20" height="20"></div>
+        </div>
+        <div class="todo-container">
+            <h2>오늘의 할일</h2>
+            <hr>
+            <ul id="todo-list">
+                <li><input type="checkbox" id="todo1"><label for="todo1">영어 단어 50개 외우기</label></li>
+                <li><input type="checkbox" id="todo2"><label for="todo2">수학 문제집 3장 풀기</label></li>
+                <li><input type="checkbox" id="todo3"><label for="todo3">독서 30분하기</label></li>
+            </ul>
+            <div class="todo-input-container">
+                <input type="text" id="todo-input" placeholder="새로운 할일을 입력하세요">
+                <button id="add-todo">추가</button>
+            </div>
+        </div>
     </section>
     <footer>
 

@@ -1,0 +1,81 @@
+.date-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date {
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size: 36px;
+}
+
+.calendar-icon {
+    display: flex;
+    align-items: center;
+}
+
+.todo-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f8ff; /* 연한 하늘색 배경 */
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.todo-container h2 {
+    color: #4A628A;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.todo-container hr {
+    border: none;
+    height: 2px;
+    background-color: #4A628A;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#todo-list {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#todo-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#todo-list li input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.todo-input-container {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#todo-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 70%;
+    margin-right: 10px;
+    border-radius: 15px;
+}
+
+#add-todo {
+    padding: 10px 20px;
+    background-color: #4A628A;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
