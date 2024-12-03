@@ -1,0 +1,141 @@
+.date-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date {
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size: 36px;
+}
+
+.calendar-icon {
+    display: flex;
+    align-items: center;
+}
+
+
+.todo-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #e9f5f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.date-picker-container {
+    text-align: center;
+}
+
+.todo-container h2 {
+    color: #4A628A;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.todo-container hr {
+    border: none;
+    height: 2px;
+    background-color: #4A628A;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#todo-list {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#todo-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#todo-list li .custom-checkbox {
+    margin-right: 10px; 
+}
+
+#todo-list li .delete-button {
+    margin-left: 10px;
+}
+
+#todo-list li span.completed {
+    color: #999;
+}
+
+#todo-list li input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.todo-input-container {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#todo-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 70%;
+    margin-right: 10px;
+    border-radius: 15px;
+    flex-grow: 1;
+}
+
+#add-todo {
+    padding: 10px 20px;
+    background-color: #4A628A;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* 기본 체크박스 숨기기 */
+input[type="checkbox"] {
+    display: none; /* 기본 체크박스를 숨깁니다 */
+}
+
+/* 커스텀 체크박스 스타일 */
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4A628A;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle; /* 수직 정렬 */
+}
+
+.custom-checkbox.checked {
+    background-color: #4A628A;
+}
+
+.custom-checkbox.checked::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white; /* 체크 표시 색상 */
+    border-width: 0 2px 2px 0; /* 체크 모양 */
+    transform: rotate(45deg);
+}
+
+.delete-button {
+    padding: 5px 10px; /* 버튼 크기 조정 */
+    background-color: #4A628A; /* 배경색 */
+    color: white; /* 글자색 */
+    border: none; /* 테두리 제거 */
+    cursor: pointer; /* 포인터 커서 */
+    border-radius: 5px; /* 모서리 둥글게 */
+}
