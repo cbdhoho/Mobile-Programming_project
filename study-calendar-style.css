@@ -63,3 +63,25 @@ section {
         #4BC0C0 324deg 360deg
     );
 }
+
+td {
+    position: relative;
+    vertical-align: top;
+    text-align: center;
+    padding: 8px;
+}
+
+.date {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 12px; /* Smaller font for the date */
+    font-weight: bold;
+}
+
+.study-time {
+    font-size: 10px; /* Reduce font size for the study time */
+    color: gray; /* Optional: Lighter color for time display */
+    margin-top: 18px; /* Space between the date and time */
+    display: block;
+}

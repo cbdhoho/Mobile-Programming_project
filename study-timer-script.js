@@ -86,13 +86,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function saveToLocalStorage() {
+        const today = new Date();
+        const dateKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    
         const subjects = Array.from(tbody.rows).map(row => ({
             name: row.cells[0].textContent,
             time: row.cells[1].textContent
         }));
+    
+        // 기존 데이터 불러오기
+        const studyData = JSON.parse(localStorage.getItem('studyData')) || {};
+        
+        // 해당 날짜의 데이터 저장
+        studyData[dateKey] = subjects.map(subject => subject.time);
+    
+        // 저장
+        localStorage.setItem('studyData', JSON.stringify(studyData));
         localStorage.setItem('subjects', JSON.stringify(subjects));
         localStorage.setItem('totalTime', JSON.stringify(totalTimer));
     }
+    
 
     function loadFromLocalStorage() {
         const subjects = JSON.parse(localStorage.getItem('subjects')) || [];

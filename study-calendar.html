@@ -41,42 +41,31 @@
     </nav>
     <section>
         <article class="calendar-container">
-            <h2>12월 학습 캘린더</h2>
+            <h2 id="month-year"></h2>
+            <button id="prev-month">◀</button>
+            <button id="next-month">▶</button>
+
             <table id="calendar">
                 <thead>
                     <tr>
                         <th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td></td><td></td><td></td><td></td><td></td><td>1<br>2h</td><td>2<br>3h</td>
-                    </tr>
-                    <tr>
-                        <td>3<br>1h</td><td>4<br>2h</td><td>5<br>3h</td><td>6<br>2h</td><td>7<br>4h</td><td>8<br>3h</td><td>9<br>5h</td>
-                    </tr>
-                    <!-- 나머지 주차 생략 -->
-                </tbody>
+                <tbody id="calendar-body"></tbody>
             </table>
-        </article>
-        <article class="statistics-container">
-            <h2>12월 학습 통계</h2>
-            <div class="chart-container">
-                <div class="chart-legend">
-                    <div class="legend-item"><span class="color-box" style="background-color: #FF6384;"></span>국어: 25%</div>
-                    <div class="legend-item"><span class="color-box" style="background-color: #36A2EB;"></span>영어: 30%</div>
-                    <div class="legend-item"><span class="color-box" style="background-color: #FFCE56;"></span>수학: 35%</div>
-                    <div class="legend-item"><span class="color-box" style="background-color: #4BC0C0;"></span>과학: 10%</div>
-                </div>
-                <div class="pie-chart">
-                    <!-- 원 도표를 CSS로 표현 -->
-                </div>
-            </div>
+
+            <!-- 월별 학습 통계 -->
+            <article class="statistics-container">
+                <h2>월별 학습 통계</h2>
+                <canvas id="myChart"></canvas> <!-- 차트를 위한 캔버스 -->
+            </article>
+
         </article>
     </section>
-    <footer>
 
-    </footer>
+    <footer></footer>
+    <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
+    <script src='study-calendar-script.js'></script>
 </body>
 
 </html>
