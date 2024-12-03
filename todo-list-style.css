@@ -131,11 +131,21 @@ input[type="checkbox"] {
     transform: rotate(45deg);
 }
 
-.delete-button {
+.delete-button,
+.edit-button,
+.complete-button {
     padding: 5px 10px; /* 버튼 크기 조정 */
     background-color: #4A628A; /* 배경색 */
     color: white; /* 글자색 */
     border: none; /* 테두리 제거 */
     cursor: pointer; /* 포인터 커서 */
     border-radius: 5px; /* 모서리 둥글게 */
+}
+
+.edit-button {
+    margin-left: 10px;
+}
+
+.complete-button {
+    margin-left: 10px;
 }

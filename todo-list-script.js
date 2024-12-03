@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
     const datePicker = document.getElementById('date-picker');
     const todoInput = document.getElementById('todo-input');
@@ -50,7 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // 커스텀 체크박스 HTML 추가
         todoItem.innerHTML = `
             <div class="custom-checkbox ${completed ? 'checked' : ''}" tabindex="0"></div>
+            <input type="text" class="edit-input" style="display: none;" placeholder="수정할 내용을 입력하세요" />
             <span class="${completed ? 'completed' : ''}" style="${completed ? 'text-decoration: line-through;' : ''}">${text}</span>
+            <button class="edit-button">수정</button>
             <button class="delete-button">삭제</button>
         `;
         
@@ -65,14 +68,30 @@ document.addEventListener('DOMContentLoaded', function () {
             saveTodos(datePicker.value); // 상태 저장
         });
         
-        // 키보드 접근성 추가
-        checkbox.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                this.click();
-                e.preventDefault(); // 기본 동작 방지
+        // 수정 버튼 이벤트
+        const editButton = todoItem.querySelector('.edit-button');
+        const editInput = todoItem.querySelector('.edit-input');
+    
+        editButton.addEventListener('click', function () {
+            const span = todoItem.querySelector('span'); // span 요소를 가져옴
+            if (editInput.style.display === 'none') {
+                editInput.value = span.textContent; // 현재 텍스트로 초기화
+                editInput.style.display = 'inline-block'; // 입력란 보이기
+                span.style.display = 'none'; // 원래 텍스트 숨기기
+                editButton.textContent = '완료'; // 버튼 텍스트 변경
+            } else {
+                const newText = editInput.value.trim();
+                if (newText) {
+                    span.textContent = newText; // 텍스트 업데이트
+                    editInput.style.display = 'none'; // 입력란 숨기기
+                    span.style.display = 'inline'; // 원래 텍스트 보이기
+                    editButton.textContent = '수정'; // 버튼 텍스트 원래대로 변경
+                    saveTodos(datePicker.value); // 상태 저장
+                }
             }
         });
         
+    
         // 삭제 버튼 이벤트
         todoItem.querySelector('.delete-button').addEventListener('click', function () {
             todoList.removeChild(todoItem);
