@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     const datePicker = document.getElementById('date-picker');
     const todoInput = document.getElementById('todo-input');
@@ -33,9 +32,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function setSelectedDateTitle(date) {
+        const dateObj = new Date(date);
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        const formattedDate = dateObj.toLocaleDateString('ko-KR', options).replace(/\./g, '.'); // YYYY.MM.DD 형식으로 변환
+        const dayOfWeek = getDayOfWeek(dateObj); // 요일 계산
         if (selectedDateTitle) {
-            selectedDateTitle.textContent = `${date}의 할 일`;
+            selectedDateTitle.textContent = `${formattedDate}(${dayOfWeek}) 할 일 리스트`;
         }
+    }
+
+    // 요일 계산 함수
+    function getDayOfWeek(date) {
+        const days = ['일', '월', '화', '수', '목', '금', '토'];
+        return days[date.getDay()]; // getDay()는 0(일요일)부터 6(토요일)까지의 숫자를 반환
     }
 
     function addTodo(date, text) {
@@ -148,10 +157,10 @@ document.addEventListener('DOMContentLoaded', function () {
    }
 
    flatpickr("#date-picker", {
-    dateFormat: "Y-m-d",
-    onChange: function(selectedDates, dateStr, instance) {
-        setSelectedDateTitle(dateStr);
-        loadTodos(dateStr);
-    }
-});
+       dateFormat: "Y-m-d",
+       onChange: function(selectedDates, dateStr, instance) {
+           setSelectedDateTitle(dateStr);
+           loadTodos(dateStr);
+       }
+   });
 });
