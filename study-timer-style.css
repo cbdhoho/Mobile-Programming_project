@@ -30,7 +30,8 @@ table {
     border-spacing: 0;
     margin: 10px auto;
     width: 80%;
-    background-color: #B9E5E8;
+    background-color: #e9f5f9;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 tr th {
