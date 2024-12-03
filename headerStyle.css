@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: rgb(203, 235, 255);
+    background-color: #DFF2EB;
 }
 
 #topContainer {
@@ -30,26 +30,22 @@ body {
 
 #nameChange:hover,
 #init:hover {
-    background-color: #94caff;
+    background-color: #7AB2D3;
 }
 
 #headerTitle {
     text-align: center;
 }
 
-#titleText {
-    text-decoration: none;
-}
-
 hr {
     border: none;
     height: 2px;
-    background-color: #94caff;
+    background-color: #7AB2D3;
     margin: 20px 0;
 }
 
 nav {
-    background-color: #b3d9ff;
+    background-color: #B9E5E8;
     padding: 10px 0;
     border-radius: 15px;
 }
@@ -64,11 +60,11 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: #4A628A;
     padding: 5px 10px;
 }
 
 nav ul li a:hover {
-    background-color: #94caff;
+    background-color: #7AB2D3;
     border-radius: 5px;
 }
