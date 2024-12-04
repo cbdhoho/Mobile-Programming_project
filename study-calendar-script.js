@@ -138,14 +138,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 }]
             },
             options: {
-                responsive: true,
+                responsive: false,
                 plugins: {
                     legend: {
                         position: 'top',
+                        labels: {
+                            // 범례 텍스트 스타일
+                            font: {
+                                size: 14,
+                                family: "'Poor Story', Arial, Helvetica, 'sans-serif'"
+                            },
+                        }
                     },
                     title: {
                         display: true,
                         text: `${currentDate.getMonth() + 1}월 학습 통계`,
+                        font: {
+                            size: 24,
+                            family: "'Poor Story', Arial, Helvetica, 'sans-serif'"                            
+                        }
                     },
                 },
             },

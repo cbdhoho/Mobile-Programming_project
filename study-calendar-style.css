@@ -6,11 +6,12 @@ section {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 }
 
-.calendar-container, .statistics-container {
+.calendar-container  {
     width: 80%;
     margin: 20px auto;
     text-align: center;
 }
+
 
 #calendar {
     width: 100%;
@@ -31,9 +32,14 @@ section {
 
 .chart-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     margin-top: 20px;
+    width: 100%;
+}
+
+#myChart {
+    max-width: 700px; /* 원하는 최대 너비 설정 */
 }
 
 .chart-legend {
