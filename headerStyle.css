@@ -21,7 +21,7 @@ body {
 }
 
 #nameChange,
-#init {
+#initButton {
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 5px;
@@ -29,7 +29,7 @@ body {
 }
 
 #nameChange:hover,
-#init:hover {
+#initButton:hover {
     background-color: #7AB2D3;
 }
 
