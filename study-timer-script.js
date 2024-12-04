@@ -110,19 +110,30 @@ document.addEventListener('DOMContentLoaded', function() {
         // 기존 데이터 불러오기
         const studyData = JSON.parse(localStorage.getItem('studyData')) || {};
         const totalTimes = JSON.parse(localStorage.getItem('totalTimes')) || {};
-        const totalTime = JSON.parse(localStorage.getItem('totalTime')) || {};
+        let deletedSubjects = JSON.parse(localStorage.getItem('deletedSubjects')) || {};
     
         // 날짜별 과목 데이터 업데이트
-        studyData[dateKey] = subjects.map(subject => subject.time);
+        studyData[dateKey] = subjects.map(subject => ({ name: subject.name, time: subject.time }));
+    
+        // 삭제된 과목 처리
+        if (!deletedSubjects[dateKey]) {
+            deletedSubjects[dateKey] = [];
+        }
+        const currentSubjectNames = subjects.map(s => s.name);
+        const previousSubjects = studyData[dateKey] || [];
+        previousSubjects.forEach(subject => {
+            if (!currentSubjectNames.includes(subject.name)) {
+                deletedSubjects[dateKey].push(subject);
+            }
+        });
     
         // 총 학습 시간 저장 (삭제된 과목 포함)
         totalTimes[dateKey] = `${String(totalTimer.hours).padStart(2, '0')}:${String(totalTimer.minutes).padStart(2, '0')}:${String(totalTimer.seconds).padStart(2, '0')}`;
     
         // 데이터 저장
         localStorage.setItem('studyData', JSON.stringify(studyData));
-        console.log("s", totalTimes)
         localStorage.setItem('totalTimes', JSON.stringify(totalTimes));
-        console.log("no", totalTime)
+        localStorage.setItem('deletedSubjects', JSON.stringify(deletedSubjects));
         localStorage.setItem('subjects', JSON.stringify(subjects));
     }
     
