@@ -31,8 +31,8 @@ table {
     margin: 10px auto;
     width: 80%;
     background-color: #e9f5f9;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    table-layout: fixed !important; /* Ensure the table layout is fixed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    table-layout: fixed !important;
 }
 
 tr th, tr td {
@@ -41,7 +41,7 @@ tr th, tr td {
 }
 
 tr th {
-    width: 25% !important; /* Force width for first column header */
+    width: 25% !important;
 }
 
 tr th:first-child {
@@ -62,7 +62,7 @@ tr th:first-child::after {
 tr td:first-child {
     position: relative;
     border-right: none;
-    width: 25% !important; /* Force width for first column */
+    width: 25% !important;
 }
 
 tr td:first-child::after {
@@ -76,15 +76,15 @@ tr td:first-child::after {
 }
 
 tr th:nth-child(2), tr td:nth-child(2) {
-    width: 60% !important; /* Force width for second column */
+    width: 60% !important;
 }
 
 tr th:nth-child(3), tr td:nth-child(3) {
-    width: 3% !important; /* Force width for second column */
+    width: 3% !important;
 }
 
 tr th:last-child, tr td:last-child {
-    width: 0% !important; /* Force width for last column */
+    width: 0% !important;
     text-align: right;
 }
 
@@ -118,4 +118,38 @@ tbody tr::after {
 
 tbody tr:last-child::after {
     display: none;
+}
+
+/* 반응형 웹을 위한 CSS */
+@media (max-width: 768px) {
+    table {
+        width: 95%;
+    }
+    
+    tr th, tr td {
+        padding: 8px;
+    }
+
+    tr td:first-child input {
+        width: 100%; /* 입력창 너비 조정 */
+        box-sizing: border-box; /* 테두리와 패딩 포함 */
+    }
+
+    .time-text {
+        font-size: 28px; /* 작은 화면에서 시간 텍스트 크기 조정 */
+    }
+}
+
+@media (max-width: 480px) {
+    table {
+        width: 100%;
+    }
+
+    .total-text, .time-text {
+        font-size: 18px; /* 작은 화면에서 텍스트 크기 조정 */
+    }
+
+    tr td:first-child input {
+        font-size: 14px; /* 입력창의 텍스트 크기 조정 */
+    }
 }
