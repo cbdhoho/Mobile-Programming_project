@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     
         // 차트 데이터 준비 및 렌더링
-        const labels = Object.keys(subjectTimeMap);
+        const labels = Object.keys(subjectTimeMap).filter(name => subjectTimeMap[name] > 0);
         const data = labels.map(name => subjectTimeMap[name] / 3600); // 시간을 초 단위에서 시간 단위로 변환
         renderChart(labels, data);
     }
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!map[name]) map[name] = 0;
     
         // time이 유효한지 확인
-        if (!time) return;
+        if (!time || time === "00:00:00") return; // 시간이 "00:00:00"인 과목은 포함하지 않음
     
         const [hours, minutes, seconds] = time.split(':').map(Number);
         map[name] += hours * 3600 + minutes * 60 + seconds;
