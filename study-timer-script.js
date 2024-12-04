@@ -23,12 +23,15 @@ document.addEventListener('DOMContentLoaded', function() {
         newRow.innerHTML = `
             <td>${subject || '<input type="text" placeholder="과목명">'}</td>
             <td>${time}</td>
-            <td><img src="play-button.png" alt="재생" width="10" height="10"></td>
+            <td>
+                <img src="play-button.png" alt="재생" width="10" height="10">
+                <img src="delete.png" alt="삭제" width="10" height="10">
+            </td>
         `;
         if (!subject) {
             const input = newRow.querySelector('input');
             input.focus();
-            input.addEventListener('blur', function() {
+            input.addEventListener('blur', function () {
                 if (this.value.trim() !== '') {
                     this.parentElement.innerHTML = this.value;
                     saveToLocalStorage();
@@ -39,6 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         saveToLocalStorage();
     }
+    
+    // 삭제 버튼 클릭 처리
+    tbody.addEventListener('click', function (e) {
+        if (e.target.alt === '삭제') {
+            const row = e.target.closest('tr');
+            row.remove();
+            saveToLocalStorage();
+        }
+    });
+    
 
     function toggleTimer(button) {
         const row = button.closest('tr');
