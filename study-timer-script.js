@@ -39,6 +39,19 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!subject) {
             const input = newRow.querySelector('input');
             input.focus();
+            // 입력 필드에서 Enter 키를 눌렀을 때 저장하도록 이벤트 추가
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    // Enter를 눌렀을 때 저장
+                    if (this.value.trim() !== '') {
+                        this.parentElement.innerHTML = this.value;
+                        saveToLocalStorage();
+                    } else {
+                        newRow.remove(); // 빈 값이면 삭제
+                    }
+                }
+            });
+
             input.addEventListener('blur', function () {
                 if (this.value.trim() !== '') {
                     this.parentElement.innerHTML = this.value;

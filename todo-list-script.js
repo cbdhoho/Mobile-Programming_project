@@ -35,6 +35,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // 엔터 키 입력 시 할일 추가
+    todoInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            const todoText = todoInput.value.trim();
+            const selectedDate = datePicker.value;
+
+            if (todoText) {
+                addTodo(selectedDate, todoText);
+                todoInput.value = ''; // 입력창 초기화
+            }
+        }
+    });
+
     function setSelectedDateTitle(date) {
         const dateObj = new Date(date);
         const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
@@ -98,6 +111,22 @@ document.addEventListener('DOMContentLoaded', function () {
                     span.textContent = newText; // 텍스트 업데이트
                     editInput.style.display = 'none'; // 입력란 숨기기
                     span.style.display = 'inline'; // 원래 텍스트 보이기
+                    editButton.textContent = '수정'; // 버튼 텍스트 원래대로 변경
+                    saveTodos(datePicker.value); // 상태 저장
+                }
+            }
+        });
+
+        // Enter 키로 수정 완료
+        editInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                const newText = editInput.value.trim();
+                if (newText) {
+                    const span = todoItem.querySelector('span');
+                    span.textContent = newText; // 텍스트 업데이트
+                    editInput.style.display = 'none'; // 입력란 숨기기
+                    span.style.display = 'inline'; // 원래 텍스트 보이기
+                    const editButton = todoItem.querySelector('.edit-button');
                     editButton.textContent = '수정'; // 버튼 텍스트 원래대로 변경
                     saveTodos(datePicker.value); // 상태 저장
                 }
