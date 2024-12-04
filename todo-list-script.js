@@ -5,8 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const todoList = document.getElementById('todo-list');
     const selectedDateTitle = document.getElementById('selected-date-title');
 
-    // 현재 날짜로 디폴트 설정
-    const today = new Date().toISOString().split('T')[0];
+    const todays = new Date(); // 현재 날짜와 시간을 대한민국 시간대로 가져옴
+    const year = todays.getFullYear();
+    const month = String(todays.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+    const day = String(todays.getDate()).padStart(2, '0'); // 날짜 포맷에 맞게 2자리로 표현
+
+    const today = `${year}-${month}-${day}`; // YYYY-MM-DD 형식으로 변환
     datePicker.value = today;
 
     // 초기 상태 설정
@@ -56,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function createTodoElement(text, completed) {
         const todoItem = document.createElement('li');
-        
+
         // 커스텀 체크박스 HTML 추가
         todoItem.innerHTML = `
             <div class="custom-checkbox ${completed ? 'checked' : ''}" tabindex="0"></div>
@@ -65,10 +69,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <button class="edit-button">수정</button>
             <button class="delete-button">삭제</button>
         `;
-        
+
         // 체크박스 클릭 이벤트
         const checkbox = todoItem.querySelector('.custom-checkbox');
-        
+
         checkbox.addEventListener('click', function () {
             this.classList.toggle('checked');
             const span = todoItem.querySelector('span');
@@ -76,11 +80,11 @@ document.addEventListener('DOMContentLoaded', function () {
             span.classList.toggle('completed', this.classList.contains('checked')); // 완료 클래스 추가
             saveTodos(datePicker.value); // 상태 저장
         });
-        
+
         // 수정 버튼 이벤트
         const editButton = todoItem.querySelector('.edit-button');
         const editInput = todoItem.querySelector('.edit-input');
-    
+
         editButton.addEventListener('click', function () {
             const span = todoItem.querySelector('span'); // span 요소를 가져옴
             if (editInput.style.display === 'none') {
@@ -99,15 +103,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         });
-        
-    
+
+
         // 삭제 버튼 이벤트
         todoItem.querySelector('.delete-button').addEventListener('click', function () {
             todoList.removeChild(todoItem);
             saveTodos(datePicker.value); // 상태 저장
             updateNoTodoMessage(); // "할 일이 없습니다." 메시지 업데이트
         });
-        
+
         return todoItem;
     }
 
@@ -118,10 +122,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 text: item.querySelector('span').textContent,
                 completed: item.querySelector('.custom-checkbox').classList.contains('checked'),
             }));
-    
+
         localStorage.setItem(`todos_${date}`, JSON.stringify(todos));
     }
-    
+
 
     function loadTodos(date) {
         todoList.innerHTML = ''; // 기존 리스트 초기화
@@ -138,29 +142,29 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-   // "할 일이 없습니다." 메시지 업데이트 함수
-   function updateNoTodoMessage() {
-       const noTodoMessageId = 'no-todo-message';
-       let noTodoMessage = document.getElementById(noTodoMessageId);
+    // "할 일이 없습니다." 메시지 업데이트 함수
+    function updateNoTodoMessage() {
+        const noTodoMessageId = 'no-todo-message';
+        let noTodoMessage = document.getElementById(noTodoMessageId);
 
-       if (todoList.children.length === 0) {
-           if (!noTodoMessage) { // 메시지가 없을 때만 추가
-               noTodoMessage = document.createElement('li');
-               noTodoMessage.id = noTodoMessageId;
-               noTodoMessage.textContent = '할 일이 없습니다.';
-               noTodoMessage.style.textAlign = 'center';
-               todoList.appendChild(noTodoMessage);
-           }
-       } else if (noTodoMessage) { 
-           todoList.removeChild(noTodoMessage); 
-       }
-   }
+        if (todoList.children.length === 0) {
+            if (!noTodoMessage) { // 메시지가 없을 때만 추가
+                noTodoMessage = document.createElement('li');
+                noTodoMessage.id = noTodoMessageId;
+                noTodoMessage.textContent = '할 일이 없습니다.';
+                noTodoMessage.style.textAlign = 'center';
+                todoList.appendChild(noTodoMessage);
+            }
+        } else if (noTodoMessage) {
+            todoList.removeChild(noTodoMessage);
+        }
+    }
 
-   flatpickr("#date-picker", {
-       dateFormat: "Y-m-d",
-       onChange: function(selectedDates, dateStr, instance) {
-           setSelectedDateTitle(dateStr);
-           loadTodos(dateStr);
-       }
-   });
+    flatpickr("#date-picker", {
+        dateFormat: "Y-m-d",
+        onChange: function (selectedDates, dateStr, instance) {
+            setSelectedDateTitle(dateStr);
+            loadTodos(dateStr);
+        }
+    });
 });
