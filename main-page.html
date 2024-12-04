@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Timer</title>
+    <link href="timer.png" rel="shortcut icon" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="headerStyle.css">
+    <link rel="stylesheet" href="study-timer-style.css">
+    <link rel="stylesheet" href="main-page-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="topContainer">
+            <div id="topParagraph">오늘의 명언</div>
+            <div id="topSetting">
+                <div id="nameChange">이름 변경</div>
+                <div id="initButton">초기화</div>
+            </div>
+        </div>
+        <div>
+            <h1 id="headerTitle">김민선's Study Timer</h1>      
+        </div>
+    </header>
+    <hr>
+    <nav>
+        <ul>
+            <li><a href="study-timer.html" class="nav-link">공부 타이머</a></li>
+            <li><a href="todo-list.html" class="nav-link">할일 관리</a></li>
+            <li><a href="study-statistics.html" class="nav-link">학습 캘린더</a></li>
+            <li><a href="white-noise.html" class="nav-link">백색소음</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="intro">
+            <div class="image-container">
+                <img src="study-people.png" alt="Study Image" class="study-image">
+            </div>
+            <div class="intro-text">
+                <h2>학습 타이머 소개</h2>
+                <p>이 학습 타이머는 효율적인 공부 습관을 기르는 데 도움을 주는 도구입니다. 집중할 때는 타이머가 시간을 추적하고, 휴식 시간이 되면 알려줍니다. 학습과 휴식을 균형 있게 유지하며 생산적인 공부 시간을 만들어 보세요.</p>
+            </div>
+        </div>
+
+        <div class="slider swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide">
+                    <h3>1. 학습 타이머</h3>
+                    <p>사용자는 학습 세션을 시작하고 중지할 수 있으며, "HH:MM:SS" 형식으로 시간을 표시하여 쉽게 경과 시간을 확인할 수 있습니다.</p>
+                </div>
+                <div class="swiper-slide slide">
+                    <h3>2. 작업 관리</h3>
+                    <p>작업을 추가, 조회, 삭제할 수 있으며, localStorage를 통해 작업 데이터가 유지됩니다.</p>
+                </div>
+                <div class="swiper-slide slide">
+                    <h3>3. 학습 주제 관리</h3>
+                    <p>각 주제별로 타이머를 설정하고, 하위 작업을 추가할 수 있습니다.</p>
+                </div>
+                <div class="swiper-slide slide">
+                    <h3>4. 학습 시간 통계</h3>
+                    <p>총 학습 시간을 추적하고, 주제별 통계를 통해 학습 패턴을 분석할 수 있습니다.</p>
+                </div>
+                <div class="swiper-slide slide">
+                    <h3>5. 데이터 관리</h3>
+                    <p>모든 데이터는 localStorage에 저장되어 영구적으로 유지됩니다.</p>
+                </div>
+                <div class="swiper-slide slide">
+                    <h3>6. 반응형 디자인</h3>
+                    <p>이 웹 애플리케이션은 다양한 기기에서 최적화된 사용자 경험을 제공합니다.</p>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+    <footer>
+        <!-- Footer content can go here -->
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="main-page.js"></script>
+</body>
+
+</html>
