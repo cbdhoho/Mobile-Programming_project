@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const plusButton = document.querySelector('thead img[alt="추가"]');
     const tbody = document.querySelector('tbody');
     const totalTimeElement = document.querySelector('.time-text');
@@ -8,24 +8,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Local Storage에서 데이터 로드
     loadFromLocalStorage();
 
-    plusButton.addEventListener('click', function() {
+    plusButton.addEventListener('click', function () {
         addNewSubject();
     });
 
-    tbody.addEventListener('click', function(e) {
+    tbody.addEventListener('click', function (e) {
         if (e.target.alt === '재생' || e.target.alt === '일시정지') {
             toggleTimer(e.target);
         }
     });
 
     // 초기화 버튼 클릭 시 로컬스토리지 데이터 삭제
-    initButton.addEventListener('click', function() {
+    initButton.addEventListener('click', function () {
         if (confirm("정말로 모든 데이터를 초기화하시겠습니까?")) {
             localStorage.clear();  // 로컬 스토리지의 모든 데이터 삭제
             location.reload();  // 페이지 리로드하여 초기화된 상태로 되돌림
         }
     });
-    
+
     function addNewSubject(subject = '', time = '00:00:00') {
         const newRow = tbody.insertRow();
         newRow.innerHTML = `
@@ -50,38 +50,41 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         saveToLocalStorage();
     }
-    
+
     // 삭제 버튼 클릭 처리
     tbody.addEventListener('click', function (e) {
         if (e.target.alt === '삭제') {
             const row = e.target.closest('tr');
             const subject = row.cells[0].textContent;
             const time = row.cells[1].textContent;
-            row.remove();
-            
-            // 삭제된 과목을 deletedSubjects에 추가 (시간 포함)
-            const today = new Date();
-            const dateKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-            const deletedSubjects = JSON.parse(localStorage.getItem('deletedSubjects')) || {};
-            if (!deletedSubjects[dateKey]) {
-                deletedSubjects[dateKey] = [];
+            // 삭제 전 사용자 확인
+            if (confirm("정말로 이 과목을 삭제하시겠습니까?")) {
+                row.remove(); // 과목 삭제
+
+                // 삭제된 과목을 deletedSubjects에 추가 (시간 포함)
+                const today = new Date();
+                const dateKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+                const deletedSubjects = JSON.parse(localStorage.getItem('deletedSubjects')) || {};
+                if (!deletedSubjects[dateKey]) {
+                    deletedSubjects[dateKey] = [];
+                }
+                deletedSubjects[dateKey].push({ name: subject, time: time });
+
+                // 로컬 스토리지에 저장
+                localStorage.setItem('deletedSubjects', JSON.stringify(deletedSubjects));
+
+                saveToLocalStorage(); // 로컬 스토리지에 현재 상태 저장
             }
-            deletedSubjects[dateKey].push({ name: subject, time: time });
-    
-            // 로컬 스토리지에 저장
-            localStorage.setItem('deletedSubjects', JSON.stringify(deletedSubjects));
-    
-            saveToLocalStorage();
         }
     });
-    
-    
+
+
 
     function toggleTimer(button) {
         const row = button.closest('tr');
         const subject = row.cells[0].textContent;
         const timeCell = row.cells[1];
-        
+
         if (timers[subject]) {
             clearInterval(timers[subject]);
             delete timers[subject];
@@ -125,20 +128,20 @@ document.addEventListener('DOMContentLoaded', function() {
     function saveToLocalStorage() {
         const today = new Date();
         const dateKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-    
+
         const subjects = Array.from(tbody.rows).map(row => ({
             name: row.cells[0].textContent,
             time: row.cells[1].textContent,
         }));
-    
+
         // 기존 데이터 불러오기
         const studyData = JSON.parse(localStorage.getItem('studyData')) || {};
         const totalTimes = JSON.parse(localStorage.getItem('totalTimes')) || {};
         let deletedSubjects = JSON.parse(localStorage.getItem('deletedSubjects')) || {};
-    
+
         // 날짜별 과목 데이터 업데이트
         studyData[dateKey] = subjects;
-    
+
         // 삭제된 과목 처리
         if (!deletedSubjects[dateKey]) {
             deletedSubjects[dateKey] = [];
@@ -154,39 +157,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
-    
+
         // 총 학습 시간 저장 (삭제된 과목 포함)
         totalTimes[dateKey] = `${String(totalTimer.hours).padStart(2, '0')}:${String(totalTimer.minutes).padStart(2, '0')}:${String(totalTimer.seconds).padStart(2, '0')}`;
-    
+
         // 데이터 저장
         localStorage.setItem('studyData', JSON.stringify(studyData));
         localStorage.setItem('totalTimes', JSON.stringify(totalTimes));
         localStorage.setItem('deletedSubjects', JSON.stringify(deletedSubjects));
         localStorage.setItem('subjects', JSON.stringify(subjects));
     }
-    
-    
-    
+
+
+
 
     function loadFromLocalStorage() {
         const subjects = JSON.parse(localStorage.getItem('subjects')) || [];
         const totalTimes = JSON.parse(localStorage.getItem('totalTimes')) || {};
-        
+
         // 오늘 날짜 키 생성
         const today = new Date();
         const dateKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-        
+
         // 오늘 날짜의 총 시간 불러오기
         const todayTotalTime = totalTimes[dateKey] || '00:00:00';
-        
+
         // 총 시간을 시, 분, 초로 분리
         const [hours, minutes, seconds] = todayTotalTime.split(':').map(Number);
-        
+
         totalTimer = { hours, minutes, seconds };
         totalTimeElement.textContent = todayTotalTime;
-    
+
         tbody.innerHTML = ''; // 기존 테이블 내용 초기화
         subjects.forEach(subject => addNewSubject(subject.name, subject.time));
     }
-    
+
 });
