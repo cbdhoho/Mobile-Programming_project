@@ -109,27 +109,44 @@ document.addEventListener('DOMContentLoaded', function() {
     
         // 기존 데이터 불러오기
         const studyData = JSON.parse(localStorage.getItem('studyData')) || {};
-        
-        // 해당 날짜의 데이터 저장
+        const totalTimes = JSON.parse(localStorage.getItem('totalTimes')) || {};
+        const totalTime = JSON.parse(localStorage.getItem('totalTime')) || {};
+    
+        // 날짜별 과목 데이터 업데이트
         studyData[dateKey] = subjects.map(subject => subject.time);
     
-        // 저장
+        // 총 학습 시간 저장 (삭제된 과목 포함)
+        totalTimes[dateKey] = `${String(totalTimer.hours).padStart(2, '0')}:${String(totalTimer.minutes).padStart(2, '0')}:${String(totalTimer.seconds).padStart(2, '0')}`;
+    
+        // 데이터 저장
         localStorage.setItem('studyData', JSON.stringify(studyData));
+        console.log("s", totalTimes)
+        localStorage.setItem('totalTimes', JSON.stringify(totalTimes));
+        console.log("no", totalTime)
         localStorage.setItem('subjects', JSON.stringify(subjects));
-        localStorage.setItem('totalTime', JSON.stringify(totalTimer));
     }
+    
     
 
     function loadFromLocalStorage() {
         const subjects = JSON.parse(localStorage.getItem('subjects')) || [];
-        const savedTotalTime = JSON.parse(localStorage.getItem('totalTime'));
-
-        if (savedTotalTime) {
-            totalTimer = savedTotalTime;
-            totalTimeElement.textContent = `${String(totalTimer.hours).padStart(2, '0')}:${String(totalTimer.minutes).padStart(2, '0')}:${String(totalTimer.seconds).padStart(2, '0')}`;
-        }
-
+        const totalTimes = JSON.parse(localStorage.getItem('totalTimes')) || {};
+        
+        // 오늘 날짜 키 생성
+        const today = new Date();
+        const dateKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+        
+        // 오늘 날짜의 총 시간 불러오기
+        const todayTotalTime = totalTimes[dateKey] || '00:00:00';
+        
+        // 총 시간을 시, 분, 초로 분리
+        const [hours, minutes, seconds] = todayTotalTime.split(':').map(Number);
+        
+        totalTimer = { hours, minutes, seconds };
+        totalTimeElement.textContent = todayTotalTime;
+    
         tbody.innerHTML = ''; // 기존 테이블 내용 초기화
         subjects.forEach(subject => addNewSubject(subject.name, subject.time));
     }
+    
 });

@@ -58,11 +58,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function getTotalStudyHours(day) {
-        const studyData = JSON.parse(localStorage.getItem('studyData')) || {}; // study-timer에서 저장한 데이터 가져오기
+        const studyData = JSON.parse(localStorage.getItem('studyData')) || {};
+        const totalTimes = JSON.parse(localStorage.getItem('totalTimes')) || {};
         const dateKey = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
     
+        // 총 학습 시간 우선 반환
+        if (totalTimes[dateKey]) {
+            return totalTimes[dateKey];
+        }
+    
+        // 과목별 시간 합산 (이전 동작 유지)
         if (studyData[dateKey]) {
-            // 해당 날짜에 저장된 시간을 합산하여 반환
             let totalSeconds = studyData[dateKey].reduce((acc, timeString) => {
                 const [hours, minutes, seconds] = timeString.split(':').map(Number);
                 return acc + hours * 3600 + minutes * 60 + seconds;
@@ -74,8 +80,10 @@ document.addEventListener('DOMContentLoaded', function () {
     
             return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         }
+    
         return null; // 해당 날짜에 데이터가 없으면 null 반환
     }
+    
     
     
 
