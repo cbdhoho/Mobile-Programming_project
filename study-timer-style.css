@@ -79,9 +79,13 @@ tr th:nth-child(2), tr td:nth-child(2) {
     width: 60% !important; /* Force width for second column */
 }
 
+tr th:nth-child(3), tr td:nth-child(3) {
+    width: 3% !important; /* Force width for second column */
+}
+
 tr th:last-child, tr td:last-child {
-    width: 15% !important; /* Force width for last column */
-    text-align: center;
+    width: 0% !important; /* Force width for last column */
+    text-align: right;
 }
 
 thead tr {

@@ -21,13 +21,17 @@ document.addEventListener('DOMContentLoaded', function () {
     function addNewSubject(subject = '', time = '00:00:00') {
         const newRow = tbody.insertRow();
         newRow.innerHTML = `
-            <td>${subject || '<input type="text" placeholder="과목명">'}</td>
-            <td>${time}</td>
-            <td>
+        <td>${subject || '<input type="text" placeholder="과목명">'}</td>
+        <td>${time}</td>
+        <td class="button-cell">
+            <div class="play-button-cell">
                 <img src="play-button.png" alt="재생" width="10" height="10">
-                <img src="delete.png" alt="삭제" width="10" height="10">
-            </td>
-        `;
+            </div>
+        </td>
+        <td class="delete-button-cell">
+            <img src="delete.png" alt="삭제" width="10" height="10">
+        </td>
+    `;
         if (!subject) {
             const input = newRow.querySelector('input');
             input.focus();
