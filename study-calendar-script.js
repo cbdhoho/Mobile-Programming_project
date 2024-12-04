@@ -69,27 +69,25 @@ document.addEventListener('DOMContentLoaded', function () {
         if (myChart) {
             myChart.destroy();
         }
-
+    
         const studyData = JSON.parse(localStorage.getItem('studyData')) || {};
-        console.log('studyData:', studyData);
         const deletedSubjects = JSON.parse(localStorage.getItem('deletedSubjects')) || {};
-        console.log('deletedSubjects:', deletedSubjects);
         const currentMonth = currentDate.getMonth();
         const currentYear = currentDate.getFullYear();
-
+    
         const subjectTimeMap = {};
-
+    
         // 현재 월의 모든 날짜에 대해 반복
         for (let day = 1; day <= 31; day++) {
             const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-
+    
             // 현재 과목 데이터 처리
             if (studyData[dateKey]) {
                 studyData[dateKey].forEach(subject => {
                     addSubjectTime(subjectTimeMap, subject.name, subject.time);
                 });
             }
-
+    
             // 삭제된 과목 데이터 처리
             if (deletedSubjects[dateKey]) {
                 deletedSubjects[dateKey].forEach(subject => {
@@ -97,12 +95,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         }
-
+    
         // 차트 데이터 준비 및 렌더링
         const labels = Object.keys(subjectTimeMap);
-        const data = labels.map(name => subjectTimeMap[name]);
+        const data = labels.map(name => subjectTimeMap[name] / 3600); // 시간을 초 단위에서 시간 단위로 변환
         renderChart(labels, data);
     }
+    
 
     function addSubjectTime(map, name, time) {
         if (!map[name]) map[name] = 0;

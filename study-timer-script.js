@@ -47,10 +47,26 @@ document.addEventListener('DOMContentLoaded', function() {
     tbody.addEventListener('click', function (e) {
         if (e.target.alt === '삭제') {
             const row = e.target.closest('tr');
+            const subject = row.cells[0].textContent;
+            const time = row.cells[1].textContent;
             row.remove();
+            
+            // 삭제된 과목을 deletedSubjects에 추가 (시간 포함)
+            const today = new Date();
+            const dateKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+            const deletedSubjects = JSON.parse(localStorage.getItem('deletedSubjects')) || {};
+            if (!deletedSubjects[dateKey]) {
+                deletedSubjects[dateKey] = [];
+            }
+            deletedSubjects[dateKey].push({ name: subject, time: time });
+    
+            // 로컬 스토리지에 저장
+            localStorage.setItem('deletedSubjects', JSON.stringify(deletedSubjects));
+    
             saveToLocalStorage();
         }
     });
+    
     
 
     function toggleTimer(button) {
@@ -104,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         const subjects = Array.from(tbody.rows).map(row => ({
             name: row.cells[0].textContent,
-            time: row.cells[1].textContent
+            time: row.cells[1].textContent,
         }));
     
         // 기존 데이터 불러오기
@@ -113,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let deletedSubjects = JSON.parse(localStorage.getItem('deletedSubjects')) || {};
     
         // 날짜별 과목 데이터 업데이트
-        studyData[dateKey] = subjects.map(subject => ({ name: subject.name, time: subject.time }));
+        studyData[dateKey] = subjects;
     
         // 삭제된 과목 처리
         if (!deletedSubjects[dateKey]) {
@@ -123,7 +139,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const previousSubjects = studyData[dateKey] || [];
         previousSubjects.forEach(subject => {
             if (!currentSubjectNames.includes(subject.name)) {
-                deletedSubjects[dateKey].push(subject);
+                // 중복 방지를 위해 이름 기반으로 체크
+                const alreadyDeleted = deletedSubjects[dateKey].find(s => s.name === subject.name);
+                if (!alreadyDeleted) {
+                    deletedSubjects[dateKey].push(subject);
+                }
             }
         });
     
@@ -136,6 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('deletedSubjects', JSON.stringify(deletedSubjects));
         localStorage.setItem('subjects', JSON.stringify(subjects));
     }
+    
     
     
 
