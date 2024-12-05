@@ -38,8 +38,24 @@
     </nav>
     <section>
         <article>
+            <!-- Media Player Section -->
+            <h2>노래 리스트</h2>
+            <div id="music-player">
+                <audio id="audioPlayer" controls></audio>
+                <p id="currentSongTitle">재생 중인 노래: 없음</p>
+            </div>
+            <ul id="music-list">
+                <li data-src="song1.mp3">Friends</li>
+                <li data-src="song2.mp3">Calm Night</li>
+                <li data-src="song3.mp3">Memories</li>
+                <li data-src="song4.mp3">Tonight</li>
+            </ul>
+        </article>
+    
+        <article>
+            <!-- Existing YouTube Links Section -->
+            <h2>공부할 때 듣기 좋은 음악</h2>
             <div class="music-list-container">
-                <h2>공부할 때 듣기 좋은 음악</h2>
                 <ul class="music-list">
                     <li>
                         <a href="https://www.youtube.com/watch?v=jfKfPfyJRdk" target="_blank">
@@ -81,11 +97,13 @@
             </div>
         </article>
     </section>
+    
     <footer>
 
     </footer>
     <script src="quote.js"></script>
     <script src="header-script.js"></script>
+    <script src="white-noise-script.js"></script>
 </body>
 
 </html>
