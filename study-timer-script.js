@@ -21,39 +21,40 @@ document.addEventListener('DOMContentLoaded', function () {
     function addNewSubject(subject = '', time = '00:00:00') {
         const newRow = tbody.insertRow();
         newRow.innerHTML = `
-        <td>${subject || '<input type="text" placeholder="과목명">'}</td>
-        <td>${time}</td>
-        <td class="button-cell">
-            <div class="play-button-cell">
-                <img src="play-button.png" alt="재생" width="10" height="10">
-            </div>
-        </td>
-        <td class="delete-button-cell">
-            <img src="delete.png" alt="삭제" width="10" height="10">
-        </td>
-    `;
+            <td>${subject || '<input type="text" placeholder="과목명">'}</td>
+            <td>${time}</td>
+            <td class="button-cell">             
+                <div class="play-button-cell">
+                    <img src="play-button.png" alt="재생" width="10" height="10">
+                </div>
+            </td>
+            <td class="delete-button-cell">
+                <img src="delete.png" alt="삭제" width="10" height="10">
+            </td>
+        `;
         if (!subject) {
             const input = newRow.querySelector('input');
             input.focus();
+    
             // 입력 필드에서 Enter 키를 눌렀을 때 저장하도록 이벤트 추가
             input.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter') {
                     // Enter를 눌렀을 때 저장
                     if (this.value.trim() !== '') {
-                        this.parentElement.innerHTML = this.value;
+                        this.closest('td').textContent = this.value;  // 수정된 값 저장
                         saveToLocalStorage();
                     } else {
                         newRow.remove(); // 빈 값이면 삭제
                     }
                 }
             });
-
+    
             input.addEventListener('blur', function () {
                 if (this.value.trim() !== '') {
-                    this.parentElement.innerHTML = this.value;
+                    this.closest('td').textContent = this.value;  // 수정된 값 저장
                     saveToLocalStorage();
                 } else {
-                    newRow.remove();
+                    newRow.remove(); // 빈 값이면 삭제
                 }
             });
         }
