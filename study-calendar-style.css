@@ -88,7 +88,7 @@ td {
 }
 
 .study-time {
-    font-size: 10px; /* Reduce font size for the study time */
+    font-size: 15px; /* Reduce font size for the study time */
     color: gray; /* Optional: Lighter color for time display */
     margin-top: 18px; /* Space between the date and time */
     display: block;
