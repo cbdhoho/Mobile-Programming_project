@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }));
 
         localStorage.setItem(`todos_${date}`, JSON.stringify(todos));
+        refreshCalendar(); // 달력 새로고침
     }
 
 
@@ -194,6 +195,29 @@ document.addEventListener('DOMContentLoaded', function () {
         onChange: function (selectedDates, dateStr, instance) {
             setSelectedDateTitle(dateStr);
             loadTodos(dateStr);
+        },
+        onDayCreate: function(dObj, dStr, fp, dayElem) {
+            const date = dayElem.dateObj;
+            const dateString = formatDate(date);
+            const todos = JSON.parse(localStorage.getItem(`todos_${dateString}`)) || [];
+            if (todos.length > 0) {
+                const dot = document.createElement('span');
+                dot.classList.add('event-dot');
+                dayElem.appendChild(dot);
+            }
         }
     });
+    
+    // 날짜를 'YYYY-MM-DD' 형식으로 포맷하는 함수
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
+    function refreshCalendar() {
+        const fp = document.querySelector("#date-picker")._flatpickr;
+        fp.redraw();
+    }
 });
