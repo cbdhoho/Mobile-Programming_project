@@ -94,7 +94,21 @@ document.addEventListener('DOMContentLoaded', function () {
         const row = button.closest('tr');
         const subject = row.cells[0].textContent;
         const timeCell = row.cells[1];
-
+    
+        // Stop all running timers
+        for (let key in timers) {
+            clearInterval(timers[key]);
+            const activeRow = Array.from(tbody.rows).find(r => r.cells[0].textContent === key);
+            if (activeRow) {
+                const buttonToUpdate = activeRow.querySelector('img[alt="일시정지"]');
+                if (buttonToUpdate) {
+                    buttonToUpdate.src = 'play-button.png';
+                    buttonToUpdate.alt = '재생';
+                }
+            }
+        }
+    
+        // If this subject already has a timer, stop it; otherwise, start a new one
         if (timers[subject]) {
             clearInterval(timers[subject]);
             delete timers[subject];
@@ -120,6 +134,8 @@ document.addEventListener('DOMContentLoaded', function () {
             button.alt = '일시정지';
         }
     }
+    
+    
 
     function updateTotalTime() {
         totalTimer.seconds++;
