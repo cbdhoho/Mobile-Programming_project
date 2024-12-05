@@ -38,4 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
             alert("유효한 이름을 입력해주세요!");
         }
     });
+
+    // headerTitle 클릭 시 main-page.html로 이동하도록 설정
+    headerTitle.addEventListener('click', function () {
+        window.location.href = 'main-page.html';
+    });
 });
