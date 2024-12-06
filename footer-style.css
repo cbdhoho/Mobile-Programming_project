@@ -4,14 +4,13 @@ footer {
 
 .personal-intro {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     padding: 20px 0;
     background-color: #f4f4f4;
 }
 
 .creator-profile {
-    margin-left: 10%;
     display: flex;
     align-items: center;
     max-width: 600px;
