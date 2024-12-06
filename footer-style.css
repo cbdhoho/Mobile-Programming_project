@@ -6,8 +6,12 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
+    padding: 3px 0;
     background-color: #f4f4f4;
+}
+
+.personal-intro h3, .personal-intro p {
+    font-size: 10px;
 }
 
 .creator-profile {
@@ -18,8 +22,8 @@ footer {
 }
 
 .profile-image {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     margin-right: 20px;
     object-fit: cover;
@@ -27,8 +31,13 @@ footer {
 
 .footer-contact {
     background-color: #e0e0e0;
-    padding: 10px 0;
+    padding: 2px 0;
     text-align: center;
+}
+
+.footer-contact p {
+    font-size: 10px;
+    margin: 0;
 }
 
 @media (max-width: 768px) {
