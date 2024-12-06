@@ -17,6 +17,14 @@
     border-radius: 8px; /* Optional: Add rounded corners */
 }
 
+.intro-text {
+    text-align: left;
+}
+
+.intro-text p {
+    text-align: left;
+}
+
 /* 슬라이드 컨테이너 스타일 */
 .slider {
     width: 100%;
