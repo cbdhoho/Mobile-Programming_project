@@ -1,9 +1,10 @@
 section {
-    margin-top: 10px;
     background-color: #e9f5f9; /* 연한 파란색 배경 */
     border-radius: 10px; /* 테두리 반경 */
     padding: 20px; /* 내부 여백 */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    width: 80%;
+    margin: 10px auto;
 }
 
 .calendar-container {
