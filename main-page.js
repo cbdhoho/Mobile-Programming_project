@@ -1,7 +1,5 @@
-// Prompt for the user's name when the page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Swiper
-    const swiper = new Swiper('.slider', {
+document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.slider', {
         slidesPerView: 1,
         spaceBetween: 30,
         navigation: {
