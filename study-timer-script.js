@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Local Storage에서 데이터 로드
     loadFromLocalStorage();
+    resetSubjectTimesForNewDay();
 
     plusButton.addEventListener('click', function () {
         addNewSubject();
@@ -135,6 +136,27 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     
+    function resetSubjectTimesForNewDay() {
+        const today = new Date();
+        const dateKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+        const lastVisitDate = localStorage.getItem('lastVisitDate');
+        const subjects = JSON.parse(localStorage.getItem('subjects')) || [];
+    
+        if (lastVisitDate !== dateKey) {
+            // Reset times to 00:00:00
+            subjects.forEach(subject => subject.time = '00:00:00');
+    
+            // Save the updated subjects back to local storage
+            localStorage.setItem('subjects', JSON.stringify(subjects));
+    
+            // Update the visible rows
+            tbody.innerHTML = '';
+            subjects.forEach(subject => addNewSubject(subject.name, subject.time));
+        }
+    
+        // Update the last visit date
+        localStorage.setItem('lastVisitDate', dateKey);
+    }
     
 
     function updateTotalTime() {
