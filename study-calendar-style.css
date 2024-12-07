@@ -6,18 +6,53 @@ section {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 }
 
-.calendar-container  {
+.calendar-container {
+    display: flex; /* 플렉스 컨테이너로 설정 */
+    flex-direction: column; /* 기본 정렬 방향 (모바일 환경용) */
+    align-items: center; /* 중앙 정렬 */
     width: 80%;
     margin: 20px auto;
     text-align: center;
 }
 
+ /* 데스크톱 화면일 때 캘린더와 차트를 가로로 정렬 */
+ @media (min-width: 768px) {
+    .calendar-container {
+        flex-direction: row; /* 가로 정렬 */
+        justify-content: space-between; /* 캘린더와 차트를 양쪽으로 배치 */
+        align-items: flex-start; /* 상단 정렬 */
+        width: 85%;
+    }
+    .chart-container {
+        margin-left: 20px; /* 캘린더와 차트 사이 여백 */
+        margin-top: 0; /* 데스크톱에서는 위쪽 여백 제거 */
+    }
+    .calendar-container div:first-child {
+        width: 20%;
+    }
+    .calendar-container div:nth-child(2) {
+        display: inline-block;        
+        width: 15%;
+    }
+    .study-time {
+        font-size: 15px; /* Reduce font size for the study time */
+        color: gray; /* Optional: Lighter color for time display */
+        margin-top: 18px; /* Space between the date and time */
+        display: block;
+        position: absolute;
+        text-align: center;
+        left: 10%;
+        transform: translateX(-50%); /* Align center */
+    }
+}
+
 
 #calendar {
-    width: 100%;
+    width: 60%; /* 데스크톱 화면에서 캘린더 크기 */
+    min-width: 400px; /* 최소 크기 */
     border-collapse: collapse;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #calendar th, #calendar td {
@@ -29,6 +64,8 @@ section {
 #calendar th {
     background-color: #f2f2f2;
 }
+
+
 
 .chart-container {
     display: flex;
