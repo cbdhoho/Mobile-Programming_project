@@ -1,155 +1,154 @@
-section > div:first-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+section > div:first-child {     
+    display: flex;     
+    flex-direction: column;     
+    align-items: center;     
+    justify-content: center;     
+    text-align: center; 
+}  
 
-.total-text, .time-text {
-    width: 100%;
-}
+.total-text, .time-text {     
+    width: 100%; 
+}  
 
-.total-text {
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 24px;
-    color: #4A628A;
-}
+.total-text {     
+    margin-top: 10px;     
+    font-weight: bold;     
+    font-size: 24px;     
+    color: #4A628A; 
+}  
 
-.time-text {
-    font-weight: bold;
-    font-size: 36px;
-    color: #4A628A;
-}
+.time-text {     
+    font-weight: bold;     
+    font-size: 36px;     
+    color: #4A628A; 
+}  
 
-table {
-    border: hidden;
-    border-collapse: separate;
-    border-radius: 8px;
-    border-spacing: 0;
-    margin: 10px auto;
-    width: 80%;
-    background-color: #e9f5f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    table-layout: fixed !important;
-}
+table {     
+    border: hidden;     
+    border-collapse: separate;     
+    border-radius: 8px;     
+    border-spacing: 0;     
+    margin: 10px auto;     
+    width: 80%;     
+    background-color: #e9f5f9;     
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);     
+    table-layout: fixed !important; 
+}  
 
-tr th, tr td {
-    padding: 10px;
-    text-align: center;
-}
+tr th, tr td {     
+    padding: 10px;     
+    text-align: center; 
+}  
 
-tr th {
-    width: 25% !important;
-}
+tr th {     
+    width: 25% !important; 
+}  
 
-tr th:first-child {
-    padding-right: 0;
-    position: relative;
-}
+tr th:first-child {     
+    padding-right: 0;     
+    position: relative; 
+}  
 
-tr th:first-child::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 16%;
-    height: 70%;
-    border-right: 2px solid #4A628A;
-    border-radius: 20px;
-}
+tr th:first-child::after {     
+    content: '';     
+    position: absolute;     
+    right: 0;     
+    top: 16%;     
+    height: 70%;     
+    border-right: 2px solid #4A628A;     
+    border-radius: 20px; 
+}  
 
-tr td:first-child {
-    position: relative;
-    border-right: none;
-    width: 25% !important;
-}
+tr td:first-child {     
+    position: relative;     
+    border-right: none;     
+    width: 25% !important; 
+}  
 
-tr td:first-child::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 16%;
-    height: 70%;
-    border-right: 2px solid #4A628A;
-    border-radius: 20px;
-}
+tr td:first-child::after {     
+    content: '';     
+    position: absolute;     
+    right: 0;     
+    top: 16%;     
+    height: 70%;     
+    border-right: 2px solid #4A628A;     
+    border-radius: 20px; 
+}  
 
-tr th:nth-child(2), tr td:nth-child(2) {
-    width: 60% !important;
-}
+tr th:nth-child(2), tr td:nth-child(2) {     
+    width: 60% !important; 
+}  
 
-tr th:nth-child(3), tr td:nth-child(3) {
-    width: 3% !important;
-}
+tr th:nth-child(3), tr td:nth-child(3) {     
+    width: 3% !important; 
+}  
 
-tr th:last-child, tr td:last-child {
-    width: 0% !important;
-    text-align: right;
-}
+tr th:last-child, tr td:last-child {     
+    width: 0% !important;     
+    text-align: right; 
+}  
 
-thead tr {
-    position: relative;
-}
+thead tr {     
+    position: relative; 
+}  
 
-thead tr::after {
-    content: '';
-    position: absolute;
-    left: 2%;
-    bottom: 0;
-    width: 96%;
-    border-bottom: 2px solid #4A628A;
-    border-radius: 20px;
-}
+thead tr::after {     
+    content: '';     
+    position: absolute;     
+    left: 2%;     
+    bottom: 0;     
+    width: 96%;     
+    border-bottom: 2px solid #4A628A;     
+    border-radius: 20px; 
+}  
 
-tbody tr {
-    position: relative;
-}
+tbody tr {     
+    position: relative; 
+}  
 
-tbody tr::after {
-    content: '';
-    position: absolute;
-    left: 2%;
-    bottom: 0;
-    width: 96%;
-    border-bottom: 2px solid #7AB2D3;
-    border-radius: 20px;
-}
+tbody tr::after {     
+    content: '';     
+    position: absolute;     
+    left: 2%;     
+    bottom: 0;     
+    width: 96%;     
+    border-bottom: 2px solid #7AB2D3;     
+    border-radius: 20px; 
+}  
 
-tbody tr:last-child::after {
-    display: none;
-}
+tbody tr:last-child::after {     
+    display: none; 
+}  
 
-/* 반응형 웹을 위한 CSS */
-@media (max-width: 768px) {
-    table {
-        width: 95%;
-    }
-    
-    tr th, tr td {
-        padding: 8px;
-    }
+@media (max-width: 768px) {     
+    table {         
+        width: 95%;     
+    }      
 
-    tr td:first-child input {
-        width: 100%; /* 입력창 너비 조정 */
-        box-sizing: border-box; /* 테두리와 패딩 포함 */
-    }
+    tr th, tr td {         
+        padding: 8px;     
+    }      
 
-    .time-text {
-        font-size: 28px; /* 작은 화면에서 시간 텍스트 크기 조정 */
-    }
-}
+    tr td:first-child input {         
+        width: 100%;         
+        box-sizing: border-box;     
+    }      
 
-@media (max-width: 480px) {
-    table {
-        width: 100%;
-    }
+    .time-text {         
+        font-size: 28px;     
+    } 
+}  
 
-    .total-text, .time-text {
-        font-size: 18px; /* 작은 화면에서 텍스트 크기 조정 */
-    }
+@media (max-width: 480px) {     
+    table {         
+        width: 100%;     
+    }      
 
-    tr td:first-child input {
-        font-size: 14px; /* 입력창의 텍스트 크기 조정 */
-    }
+    .total-text, .time-text {         
+        font-size: 18px;     
+    }      
+
+    tr td:first-child input {         
+        font-size: 14px;     
+    } 
 }

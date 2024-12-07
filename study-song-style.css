@@ -1,78 +1,77 @@
-.music-list-container {
-    width: 80%;
-    margin: 20px auto;
-    text-align: center;
-    background-color: #e9f5f9; /* 연한 파란색 배경 */
-    border-radius: 10px; /* 테두리 반경 */
-    padding: 20px; /* 내부 여백 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-}
+.music-list-container {     
+    width: 80%;     
+    margin: 20px auto;     
+    text-align: center;     
+    background-color: #e9f5f9;     
+    border-radius: 10px;     
+    padding: 20px;     
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}  
 
-.music-list {
-    list-style-type: none;
-    padding: 0;
-}
+.music-list {     
+    list-style-type: none;     
+    padding: 0; 
+}  
 
-.music-list li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
+.music-list li {     
+    display: flex;     
+    align-items: center;     
+    margin-bottom: 15px; 
+}  
 
-.music-list a {
-    text-decoration: none;
-    color: black;
-    display: flex; /* Flexbox 사용 */
-}
+.music-list a {     
+    text-decoration: none;     
+    color: black;     
+    display: flex; 
+}  
 
-.thumbnail {
-    width: 120px; /* 썸네일 너비 */
-    height: auto; /* 비율 유지 */
-    margin-right: 10px; /* 썸네일과 텍스트 간격 */
-}
+.thumbnail {     
+    width: 120px;     
+    height: auto;     
+    margin-right: 10px; 
+}  
 
-.music-info {
-    text-align: left; /* 제목과 시간을 왼쪽 정렬 */
-}
+.music-info {     
+    text-align: left; 
+}  
 
-.title {
-    font-weight: bold; /* 제목 강조 */
-}
+.title {     
+    font-weight: bold; 
+}  
 
-.duration {
-    color: gray; /* 시간 색상 */
-}
+.duration {     
+    color: gray; 
+}  
 
-/* Style for Media Player */
-#music-player {
-    background-color: #f3f3f3;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+#music-player {     
+    background-color: #f3f3f3;     
+    padding: 10px;     
+    border: 1px solid #ccc;     
+    margin-bottom: 20px;     
+    display: flex;     
+    flex-direction: column;     
+    align-items: center; 
+}  
 
-#currentSongTitle {
-    margin: 10px 0;
-    font-size: 16px;
-    font-weight: bold;
-}
+#currentSongTitle {     
+    margin: 10px 0;     
+    font-size: 16px;     
+    font-weight: bold; 
+}  
 
-#music-list {
-    list-style: none;
-    padding: 0;
-}
+#music-list {     
+    list-style: none;     
+    padding: 0; 
+}  
 
-#music-list li {
-    cursor: pointer;
-    padding: 5px;
-    margin: 5px 0;
-    background: #eaeaea;
-    transition: background-color 0.3s;
-}
+#music-list li {     
+    cursor: pointer;     
+    padding: 5px;     
+    margin: 5px 0;     
+    background: #eaeaea;     
+    transition: background-color 0.3s; 
+}  
 
-#music-list li:hover {
-    background-color: #d4d4d4;
+#music-list li:hover {     
+    background-color: #d4d4d4; 
 }

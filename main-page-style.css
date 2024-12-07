@@ -1,71 +1,69 @@
-.image-container {
-    width: 100%; /* Make the container fill the width of the section */
-    max-width: 100%; /* Set a max-width for the container */
-    height: 200px; /* Set the fixed height of the container */
-    overflow: hidden; /* Hide any part of the image that goes outside the container */
-    margin: 0 auto; /* Center the container horizontally */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
+.image-container {     
+    width: 100%; 
+    max-width: 100%; 
+    height: 200px; 
+    overflow: hidden; 
+    margin: 0 auto; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 20px; 
+}  
 
-.study-image {
-    width: 100%; /* Make the image fill the container's width */
-    height: 100%; /* Make the image fill the container's height */
-    object-fit: cover; /* Ensure the image covers the entire container without distortion */
-    border-radius: 8px; /* Optional: Add rounded corners */
-}
+.study-image {     
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 8px; 
+}  
 
-.intro-text {
-    text-align: left;
-    margin-top: 20px;
-    margin: 20px 50px 0px 50px;
-}
+.intro-text {     
+    text-align: left;     
+    margin-top: 20px;     
+    margin: 20px 50px 0px 50px; 
+}  
 
-.intro-text p {
-    text-align: left;
-}
+.intro-text p {     
+    text-align: left; 
+}  
 
-.intro-text h3 {
-    margin-top: 15px;
-    font-style: oblique;
-    font-weight: 900;
-    font-size: 36px;
-}
+.intro-text h3 {     
+    margin-top: 15px;     
+    font-style: oblique;     
+    font-weight: 900;     
+    font-size: 36px; 
+}  
 
-/* 슬라이드 컨테이너 스타일 */
-.slider {
-    width: 100%;
-    max-width: 800px; /* 최대 너비 조정 */
-    margin: auto;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-    border-radius: 10px; /* 모서리 둥글게 */
-    margin-top: 30px;
-}
+.slider {     
+    width: 100%;     
+    max-width: 800px; 
+    margin: auto;     
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);     
+    border-radius: 10px;     
+    margin-top: 30px; 
+}  
 
-.slide {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 50px; /* 슬라이드 내부 여백 */
-    background: #f0f8ff; /* 하늘색 배경 설정 */
-    border-radius: 10px; /* 모서리 둥글게 */
-    height: 300px; /* 슬라이드 높이 조정 */
-    box-sizing: border-box; /* 패딩 포함 */
-}
+.slide {     
+    display: flex;     
+    flex-direction: column;     
+    align-items: center;     
+    justify-content: center;     
+    padding: 50px;     
+    background: #f0f8ff;     
+    border-radius: 10px;     
+    height: 300px;     
+    box-sizing: border-box; 
+}  
 
-.swiper-button-next,
-.swiper-button-prev {
-    color: #000; /* 버튼 색상 */
-}
+.swiper-button-next, .swiper-button-prev {     
+    color: #000; 
+}  
 
-.swiper-pagination-bullet {
-    background: #000; /* 페이지네이션 색상 */
-}
+.swiper-pagination-bullet {     
+    background: #000; 
+}  
 
-h3, p {
-    margin: 0; /* 기본 마진 제거 */
-    text-align: center; /* 텍스트 중앙 정렬 */
+h3, p {     
+    margin: 0;     
+    text-align: center; 
 }

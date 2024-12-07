@@ -1,103 +1,99 @@
-section {
-    background-color: #e9f5f9; /* 연한 파란색 배경 */
-    border-radius: 10px; /* 테두리 반경 */
-    padding: 20px; /* 내부 여백 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-    width: 80%;
-    margin: 10px auto;
-}
+section {     
+    background-color: #e9f5f9;     
+    border-radius: 10px;     
+    padding: 20px;     
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);     
+    width: 80%;     
+    margin: 10px auto; 
+}  
 
-.calendar-container {
-    display: flex; /* 플렉스 컨테이너로 설정 */
-    flex-direction: column; /* 기본 정렬 방향 (모바일 환경용) */
-    align-items: center; /* 중앙 정렬 */
-    width: 80%;
-    margin: 20px auto;
-    text-align: center;
-}
+.calendar-container {     
+    display: flex;     
+    flex-direction: column;     
+    align-items: center;     
+    width: 80%;     
+    margin: 20px auto;     
+    text-align: center; 
+}  
 
- 
+#calendar {     
+    width: 60%;     
+    min-width: 400px;     
+    border-collapse: collapse;     
+    background-color: #fff;     
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}  
 
-#calendar {
-    width: 60%; /* 데스크톱 화면에서 캘린더 크기 */
-    min-width: 400px; /* 최소 크기 */
-    border-collapse: collapse;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+#calendar th, #calendar td {     
+    border: 1px solid #ddd;     
+    padding: 10px;     
+    text-align: center; 
+}  
 
-#calendar th, #calendar td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
+#calendar th {     
+    background-color: #f2f2f2; 
+}  
 
-#calendar th {
-    background-color: #f2f2f2;
-}
+.chart-container {     
+    display: flex;     
+    justify-content: center;     
+    align-items: center;     
+    margin-top: 20px;     
+    width: 100%; 
+}  
 
+#myChart {     
+    max-width: 700px; 
+}  
 
+.chart-legend {     
+    text-align: left; 
+}  
 
-.chart-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    width: 100%;
-}
+.legend-item {     
+    margin-bottom: 10px; 
+}  
 
-#myChart {
-    max-width: 700px; /* 원하는 최대 너비 설정 */
-}
+.color-box {     
+    display: inline-block;     
+    width: 20px;     
+    height: 20px;     
+    margin-right: 10px;     
+    vertical-align: middle; 
+}  
 
-.chart-legend {
-    text-align: left;
-}
+.pie-chart {     
+    width: 200px;     
+    height: 200px;     
+    border-radius: 50%;     
+    background: conic-gradient(         
+        #FF6384 0deg 90deg,         
+        #36A2EB 90deg 198deg,         
+        #FFCE56 198deg 324deg,         
+        #4BC0C0 324deg 360deg     
+    ); 
+}  
 
-.legend-item {
-    margin-bottom: 10px;
-}
+td {     
+    position: relative;     
+    vertical-align: top;     
+    text-align: center;     
+    padding: 8px;     
+    width: 50px;     
+    height: 50px; 
+}  
 
-.color-box {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    vertical-align: middle;
-}
+.date {     
+    position: absolute;     
+    top: 5px;     
+    left: 5px;     
+    font-size: 12px;     
+    font-weight: bold; 
+}  
 
-.pie-chart {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: conic-gradient(
-        #FF6384 0deg 90deg,
-        #36A2EB 90deg 198deg,
-        #FFCE56 198deg 324deg,
-        #4BC0C0 324deg 360deg
-    );
-}
-
-td {
-    position: relative;
-    vertical-align: top;
-    text-align: center;
-    padding: 8px;
-    width: 50px;
-    height: 50px;
-}
-
-.date {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    font-size: 12px; /* Smaller font for the date */
-    font-weight: bold;
-}
-
-.study-time {
-    font-size: 15px; /* Reduce font size for the study time */
-    color: gray; /* Optional: Lighter color for time display */
-    margin-top: 18px; /* Space between the date and time */
-    display: block;
+.study-time {     
+    font-size: 15px;     
+    color: gray;     
+    margin-top: 18px;     
+    display: block; 
 }
