@@ -15,37 +15,7 @@ section {
     text-align: center;
 }
 
- /* 데스크톱 화면일 때 캘린더와 차트를 가로로 정렬 */
- @media (min-width: 768px) {
-    .calendar-container {
-        flex-direction: row; /* 가로 정렬 */
-        justify-content: space-between; /* 캘린더와 차트를 양쪽으로 배치 */
-        align-items: flex-start; /* 상단 정렬 */
-        width: 85%;
-    }
-    .chart-container {
-        margin-left: 20px; /* 캘린더와 차트 사이 여백 */
-        margin-top: 0; /* 데스크톱에서는 위쪽 여백 제거 */
-    }
-    .calendar-container div:first-child {
-        width: 20%;
-    }
-    .calendar-container div:nth-child(2) {
-        display: inline-block;        
-        width: 15%;
-    }
-    .study-time {
-        font-size: 15px; /* Reduce font size for the study time */
-        color: gray; /* Optional: Lighter color for time display */
-        margin-top: 18px; /* Space between the date and time */
-        display: block;
-        position: absolute;
-        text-align: center;
-        left: 13%;
-        transform: translateX(-50%); /* Align center */
-    }
-}
-
+ 
 
 #calendar {
     width: 60%; /* 데스크톱 화면에서 캘린더 크기 */
