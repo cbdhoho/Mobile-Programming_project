@@ -41,7 +41,7 @@ section {
         display: block;
         position: absolute;
         text-align: center;
-        left: 10%;
+        left: 13%;
         transform: translateX(-50%); /* Align center */
     }
 }
